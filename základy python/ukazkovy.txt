@@ -1,2 +1,4 @@
 Toto je ukázkový text.
 Další øádek textu.
+Toto je ukázkový text.
+Další øádek textu.
