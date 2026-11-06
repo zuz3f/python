@@ -26,7 +26,7 @@ CREATE TABLE znamky (
 id      INTEGER PRIMARY KEY,
 
 );
-
+"""
 JMENO = [
     ("Jana", "Nováková"),
 ]
