@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS znamky;
 
 CREATE TABLE jmeno (
 id     INTEGER PRIMERY KEY,
+jmeno   TEXT NOT NULL UNIQUE,
+prijmeni    TEXT NOT NULL UNIQUE
 
 );
 
@@ -23,4 +25,8 @@ nazev   TEXT NOT NULL UNIQUE
 CREATE TABLE znamky (
 id      INTEGER PRIMARY KEY,
 
-)
+);
+
+JMENO = [
+    ("Jana", "Nováková"),
+]
