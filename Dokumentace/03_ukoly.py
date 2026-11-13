@@ -11,82 +11,98 @@ DB = "skola.db"
 UKOLY = [
     # ---------- ZAKLADNI SELECT ----------
     ("1. Vypis vsechny sloupce a radky z tabulky studenti.",
-     """
-     -- sem napis svuj SQL
+     """ 
+     SELECT * FROM studenti;
      """),
 
     ("2. Vypis jen jmeno a prijmeni vsech ucitelu.",
      """
-     -- sem napis svuj SQL
+     SELECT jmeno,prijmeni FROM ucitele;
      """),
 
     # ---------- WHERE ----------
     ("3. Vypis studenty, kteri bydli v Praze.",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM studenti
+     WHERE mesto = 'Praha';
      """),
 
     ("4. Vypis ucitele s platem vetsim nez 40 000.",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM ucitele
+     WHERE plat >= 40000;
      """),
 
     ("5. Vypis studenty narozene v roce 2008 (pouzij BETWEEN).",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM studenti
+     WHERE datum_narozeni BETWEEN '2008-01-01' AND '2008-12-31';
      """),
 
     ("6. Vypis studenty z Brna nebo z Kladna (pouzij IN).",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM studenti
+     WHERE mesto IN ('Brno','Kladno');
      """),
 
     ("7. Vypis studenty, jejichz prijmeni konci na 'ova' (pouzij LIKE).",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM studenti
+     WHERE prijmeni LIKE '%ova';
      """),
 
     ("8. Vypis studenty, u kterych nezname mesto (IS NULL).",
      """
-     -- sem napis svuj SQL
+      SELECT * FROM studenti
+      WHERE mesto IS NULL;
      """),
 
     # ---------- ORDER BY, LIMIT, DISTINCT ----------
     ("9. Vypis studenty serazene podle prijmeni abecedne.",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM studenti
+     ORDER BY prijmeni;
      """),
 
     ("10. Vypis 3 nejlepe placene ucitele.",
      """
-     -- sem napis svuj SQL
+     SELECT * FROM ucitele
+     ORDER BY plat DESC
+     LIMIT 3;
      """),
 
     ("11. Vypis seznam mest, odkud studenti jsou (kazde mesto jen jednou).",
      """
-     -- sem napis svuj SQL
+    SELECT DISTINCT mesto FROM studenti;
      """),
 
     # ---------- AGREGACE ----------
     ("12. Kolik je celkem studentu?",
      """
-     -- sem napis svuj SQL
+     SELECT COUNT(*)
+     FROM studenti;
      """),
 
     ("13. Jaky je nejnizsi, nejvyssi a prumerny plat ucitelu?",
      """
-     -- sem napis svuj SQL
+     SELECT MIN(plat), MAX(plat), AVG(plat)
+     FROM ucitele;
      """),
 
     # ---------- GROUP BY, HAVING ----------
     ("14. Kolik studentu bydli v jednotlivych mestech? (seradit od nejvic)",
      """
-     -- sem napis svuj SQL
+     SELECT mesto, COUNT(mesto) AS [pocet lidi z mesta]
+     FROM studenti
+     GROUP BY mesto
+     ORDER BY COUNT(mesto) DESC;
      """),
 
     ("15. Kolik bylo udeleno jednotlivych znamek (1, 2, 3, 4, 5)?",
      """
-     -- sem napis svuj SQL
+     SELECT znamka, COUNT(znamka) AS [pocet znamky]
+     FROM znamky
+     GROUP BY znamka;
      """),
 
     ("16. Vypis id studentu, kteri maji prumer znamek horsi nez 2.5 (HAVING).",
